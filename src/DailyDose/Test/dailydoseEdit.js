@@ -123,8 +123,8 @@ if(len&&lang){
 }
 const dataField = new FormData();
 dataField.append("id",id);
-dataField.append("hindi",lang==hindi?JSON.stringify({"questions":data_value}):JSON.stringify({"questions":getHindi}));
-dataField.append("english",lang==english?JSON.stringify({"questions":data_value}):JSON.stringify({"questions":getEnglish}));
+dataField.append("hindi",lang===hindi?JSON.stringify({"questions":data_value}):JSON.stringify({"questions":getHindi}));
+dataField.append("english",lang===english?JSON.stringify({"questions":data_value}):JSON.stringify({"questions":getEnglish}));
 dataField.append("time",time);
 dataField.append("numOfQustion",numOfQustion);
 dataField.append("instructions",draftToHtml(convertToRaw(editorState.getCurrentContent())));

@@ -22,7 +22,7 @@ export const UploadQustions = () => {
   const [time, setTime] = useState('');
   const [numOfQustion, setNumOfQustion] = useState('');
   const [marks, setMarks] = useState('');
-  const [data, setData] = useState([]);
+  const data ="";
 
   useEffect(() => {
     getTest();
@@ -43,9 +43,9 @@ export const UploadQustions = () => {
         console.log(err);
       }
       else {
-        if (fileObj.type == 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet') {
+        if (fileObj.type === 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet') {
           for (var i = 0; i < resp.rows.length; i++)
-            if (i % 8 == 0) {
+            if (i % 8 === 0) {
               const index = i / 8;
 
               const data = {
@@ -70,7 +70,7 @@ export const UploadQustions = () => {
                 ],
                 "description": `${resp.rows[i + 6][0]}`
               }
-              if (test_list == 'hindi') {
+              if (test_list === 'hindi') {
                 hindi.push(data);
                 setHindi(JSON.stringify({"questions":hindi}));
               } else {

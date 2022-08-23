@@ -75,7 +75,7 @@ getTest();
                             <div className="col-lg-4">
                                 <div className="card shadow-lg border-0 rounded-lg mt-5">
                                 <div>
-                            <img src={img_url+testValue.banner} width={392}/>
+                            <img src={img_url+testValue.banner} alt="" width={392}/>
                             </div>  
                                     <div className="card-header"><h4 className="text-center font-weight-light my-4">Edit Test Series</h4></div>
                                     <div className="card-body">

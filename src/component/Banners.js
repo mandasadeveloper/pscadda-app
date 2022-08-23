@@ -1,13 +1,13 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Head } from './Head'
 import AwesomeSlider from 'react-awesome-slider';
 export const Banners = () => {
-    const [data, setData]=useState([
-        {uid:1,title:"sunil",description:"no description",image:"123"},
-        {uid:1,title:"sunil2",description:"no description",image:"123"},
-        {uid:1,title:"sunil3",description:"no description",image:"123"},
-        {uid:1,title:"sunil4",description:"no description",image:"123"},
-      ]);
+    const data = [
+      {uid:1,title:"sunil",description:"no description",image:"123"},
+      {uid:1,title:"sunil2",description:"no description",image:"123"},
+      {uid:1,title:"sunil3",description:"no description",image:"123"},
+      {uid:1,title:"sunil4",description:"no description",image:"123"},
+    ]
   return (
     <div class="container">
         <Head props="Banners"/>

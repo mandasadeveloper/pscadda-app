@@ -97,7 +97,7 @@ return(
                 <td><Link to={`/admin-add-test-series-card/${section.id}`}>{section.test_title}</Link></td>
                 <td>{section.test_price}</td>
                 <td>{section.description}</td>
-                <td><img src={img_url+section.banner} width={100}/></td>
+                <td><img src={img_url+section.banner} width={100} alt="" /></td>
                 <td><p className='accordion-p btn btn-outline-info btn-sm'><Link to={`/admin-edit-test-series/${section.id}`} style={{margin:"10px"}}>Edit</Link></p></td>
                 <td><p onClick={()=>deleteSection(section.id)} style={{marginRight:"10px"}} className='accordion-p btn btn-outline-danger btn-sm'>Delete</p></td>
             </tr>

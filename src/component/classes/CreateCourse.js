@@ -1,18 +1,20 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import { Editor } from "react-draft-wysiwyg";
-import { convertToRaw, EditorState } from "draft-js";
+import { 
+    // convertToRaw, 
+    EditorState } from "draft-js";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import draftToHtml from "draftjs-to-html";
+// import draftToHtml from "draftjs-to-html";
 import { Head } from '../Head';
 export const CreateCourse = () => {
 const [editorState, setEditorState] = useState(() =>EditorState.createEmpty()); 
-const [data, setData]=useState([
-  {uid:1,title:"Pscadda",description:"no description",image:"/"},
-  {uid:1,title:"Pscadda2",description:"no description",image:"/"},
-  {uid:1,title:"Pscadda3",description:"no description",image:"/"},
-  {uid:1,title:"Pscadda4",description:"no description",image:"/"},
-]);
+const data = [
+    {uid:1,title:"Pscadda",description:"no description",image:"/"},
+    {uid:1,title:"Pscadda2",description:"no description",image:"/"},
+    {uid:1,title:"Pscadda3",description:"no description",image:"/"},
+    {uid:1,title:"Pscadda4",description:"no description",image:"/"},
+  ];
 
 const deleteSection=()=>{
 }   
@@ -41,7 +43,7 @@ data.map((section,index)=>(
 </div>
 <strong>{section.title}</strong> 
 <p>{section.description}</p> 
-<div><img src={section.image} width={100}/></div>
+<div><img src={section.image} width={100} alt=""/></div>
 </div>
 </div>
 </div>

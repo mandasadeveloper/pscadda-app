@@ -1,19 +1,19 @@
 import React, { useState,useEffect} from 'react'
-import { Editor } from "react-draft-wysiwyg";
-import { convertToRaw, EditorState,ContentState,convertFromHTML} from "draft-js";
+// import { Editor } from "react-draft-wysiwyg";
+// import { convertToRaw, EditorState,ContentState,convertFromHTML} from "draft-js";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import draftToHtml from "draftjs-to-html";
+// import draftToHtml from "draftjs-to-html";
 import { Head } from '../Head';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 export const EditCards = () => {
     let domain="https://pscadda.com/pscadda_app/api/";
-    let img_url='https://pscadda.com/pscadda_app/banner/';
+    // let img_url='https://pscadda.com/pscadda_app/banner/';
 const history=useNavigate();
 const {id,c_id}=useParams();
-const [banner, setBanner] = useState('')
-const [editorState, setEditorState] = useState(() =>EditorState.createEmpty()); 
+// const [banner, setBanner] = useState('')
+// const [editorState, setEditorState] = useState(() =>EditorState.createEmpty()); 
 const [testValue, setTestValue] = useState({
     card_title:"",
     numQustion:"",
@@ -39,7 +39,7 @@ const getTest=()=>{
         const data = res.data[0].quiz_list
         for (let index = 0; index < data.length; index++) {
             const element = data[index]; 
-            if (element.id==c_id) {
+            if (element.id===c_id) {
                 console.log(element);
                 setTestValue({
                     card_title:element.card_title,
