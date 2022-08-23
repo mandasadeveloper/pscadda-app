@@ -6,7 +6,7 @@ export const App = () => {
   return (
     <div>
     <Header/>
-    <BrowserRouter basename='/LAHIVE/pscadda' >
+    <BrowserRouter>
     <Content/>
     </BrowserRouter >
     </div>
