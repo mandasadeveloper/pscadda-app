@@ -108,7 +108,7 @@ const deleteSection=()=>{
                                             </div>
                                             <div className="form-floating mb-3">
                                                 <input className="form-control" id="title" name='noOfQuestion' value={state.noOfQuestion} onChange={hendlechange} type="text" placeholder="Number Of Qustion" />
-                                                <label htmlFor="title">Number Of </label>
+                                                <label htmlFor="title">Number Of Questions</label>
                                             </div>
                                             <div className="form-floating mb-3">
                                                 <input className="form-control" id="title" name='time' value={state.time} onChange={hendlechange} type="text" placeholder="Set Time in Minut" />
