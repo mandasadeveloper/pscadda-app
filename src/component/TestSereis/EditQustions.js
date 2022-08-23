@@ -37,7 +37,6 @@ const [english, setEnglish] = useState({
    useEffect(() => {    
         getTest();
  // eslint-disable-next-line react-hooks/exhaustive-deps
-
    }, []);
 const getTest=()=>{
 axios.get(domain+'get-test?id='+id+'&card_id='+c_id+'&questions=hinenglish').then(res=>{
