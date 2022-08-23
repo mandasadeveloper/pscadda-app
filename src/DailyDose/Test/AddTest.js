@@ -5,16 +5,44 @@ import { Head } from '../../component/Head';
 export const AddTest = () => {
 let domain = "https://pscadda.com/pscadda_app/api/";
 const [data, setData]=useState([]);
+const [state, setState]=useState({
+    id:-1,
+});
 useEffect(() => {
     getTest();
  // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [])
+
+const hendlechange = (e)=>{
+const {name,value}=e.target;
+setState((preValue)=>{
+    return{
+        ...preValue,
+        [name]:value
+    }
+})
+}
 
 const getTest = () => {
     axios.get(domain+'get-daily-dose').then(res => {
         setData(res.data);
     })
 }
+
+const submit=(e)=>{
+    e.preventDefault();
+    console.log(state);
+    const dataField = new FormData();
+    dataField.append("data",JSON.stringify(state));
+    axios.post(domain+'create-daily-test',dataField).then(res=>{
+   if(res.data.status===200){
+    alert(res.data.message);
+    getTest();
+   }
+    })
+    }
+
+
 const deleteSection=()=>{
 }   
   return (
@@ -41,7 +69,6 @@ const deleteSection=()=>{
                                                 <tr>
                                                     <th scope="col">Serial</th>
                                                     <th scope="col">Title</th>
-                                                    <th scope="col">Status</th>
                                                     <th scope="col">Qustions</th>
                                                     <th scope="col">Edit</th>
                                                     <th scope="col">Delete</th>
@@ -51,7 +78,6 @@ const deleteSection=()=>{
                                                 <tr>
                                                     <th scope="col">{index + 1}</th>
                                                     <td><Link to={`/admin-dailydose-upload-qustions/${section.id}?name=${section.card_title}`}>{section.card_title}</Link></td>
-                                                    <td>{section.status}</td>
                                                     <td>{section.numQustion}</td>
                                                     <td><p className='accordion-p btn btn-outline-info btn-sm'><Link to={`/admin-edit-dailydose/${section.id}`} style={{ margin: "10px" }}>Edit</Link></p></td>
                                                     <td><p onClick={() => deleteSection(section.id)} style={{ marginRight: "10px" }} className='accordion-p btn btn-outline-danger btn-sm'>Delete</p></td>
@@ -74,27 +100,23 @@ const deleteSection=()=>{
                                     <div className="card-body">
                                         <form>  
                                             <div className="form-floating mb-3">
-                                                <input className="form-control" id="title" type="text" placeholder="Test Name" />
+                                                <input className="form-control" id="title" name='name' value={state.name} onChange={hendlechange} type="text" placeholder="Test Name" />
                                                 <label htmlFor="title">Test Name</label>
                                             </div>
                                             <div className="form-floating mb-3">
-                                                <input className="form-control" id="title" type="text" placeholder="Number Of Qustion" />
-                                                <label htmlFor="title">Number Of Qustion</label>
+                                                <input className="form-control" id="title" name='noOfQuestion' value={state.noOfQuestion} onChange={hendlechange} type="text" placeholder="Number Of Qustion" />
+                                                <label htmlFor="title">Number Of </label>
                                             </div>
                                             <div className="form-floating mb-3">
-                                                <input className="form-control" id="title" type="text" placeholder="Set Time in Minut" />
+                                                <input className="form-control" id="title" name='time' value={state.time} onChange={hendlechange} type="text" placeholder="Set Time in Minut" />
                                                 <label htmlFor="title">Set Time in Minut</label>
                                             </div>
                                             <div className="form-floating mb-3">
-                                                <input className="form-control" id="title" type="text" placeholder="Marks" />
+                                                <input className="form-control" id="title" name='marks' value={state.marks} onChange={hendlechange} type="text" placeholder="Marks" />
                                                 <label htmlFor="title">Marks</label>
-                                            </div>
-                                          {/* <div className="custom-file">
-                                          <input type="file" className="custom-file-input" id="customFile"/>
-                                          <label className="custom-file-label" htmlFor="customFile">Upload Banner for Courses</label>
-                                          </div>                                      */}
+                                            </div>                                         
                                             <div className="d-flex align-items-center justify-content-between mt-4 mb-0">                                               
-                                                <a className="btn btn-primary" href="index.html">Upload</a>
+                                                <button className="btn btn-primary" onClick={submit}>Upload</button>
                                             </div>
                                         </form>
                                     </div>
