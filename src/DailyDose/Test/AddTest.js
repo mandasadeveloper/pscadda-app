@@ -7,7 +7,7 @@ let domain = "https://pscadda.com/pscadda_app/api/";
 const [data, setData]=useState([]);
 useEffect(() => {
     getTest();
-}, [])
+}, [data])
 
 const getTest = () => {
     axios.get(domain+'get-daily-dose').then(res => {

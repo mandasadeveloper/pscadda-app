@@ -20,7 +20,7 @@ export const Sidebar = () => {
                                 Banners
                             </Link>
                             {/* <div className="sb-sidenav-menu-heading">User's</div> */}
-                                <a className="nav-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                                <a className="nav-link collapsed" href={""} data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div className="sb-nav-link-icon"><i className="fas fa-book-open"></i></div>
                                 Tests & Courses
                                 <div className="sb-sidenav-collapse-arrow"><i className="fas fa-angle-down"></i></div>
@@ -38,7 +38,7 @@ export const Sidebar = () => {
                                     <a className="nav-link" href="layout-sidenav-light.html">Edit-Test-Series</a>
                                 </nav>
                             </div>                             
-                                <a className="nav-link collapsed"  data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                                <a className="nav-link collapsed" href={""}  data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                                 <div className="sb-nav-link-icon"><i className="fas fa-book-open"></i></div>
                                 Daily Dose
                                 <div className="sb-sidenav-collapse-arrow"><i className="fas fa-angle-down"></i></div>

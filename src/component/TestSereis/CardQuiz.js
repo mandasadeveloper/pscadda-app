@@ -11,10 +11,10 @@ export const CardQuiz = () => {
     const [numQustion, setNumQustion] = useState();
     const [data, setData] = useState([]);
     useEffect(() => {
-        getTest(id);
+        getTest();
     }, [id])
 
-    const getTest = (id) => {
+    const getTest = () => {
         axios.get(domain + 'get-test?id=' + id).then(res => {
             setData(res.data[0]);
             console.log(res.data);

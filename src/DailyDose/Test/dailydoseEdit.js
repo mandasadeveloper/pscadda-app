@@ -37,7 +37,7 @@ const [english, setEnglish] = useState({
     
    useEffect(() => {    
     getTest();    
-   }, []);
+   }, [id]);
 const getTest=()=>{
 axios.get(domain+'get-daily-dose?id='+id+'&questions=hienglish').then(res=>{
 let getHindiData = JSON.parse(res.data.hindi).questions;

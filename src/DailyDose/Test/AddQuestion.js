@@ -25,7 +25,7 @@ export const AddQuestion = () => {
 
   useEffect(() => {
     getTest();
-  }, [])
+  }, [id])
 
   const getTest = () => {
     axios.get(domain + 'get-daily-dose?id=' + id + '&questions=hienglish').then(res => {

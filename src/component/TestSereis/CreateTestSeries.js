@@ -33,7 +33,8 @@ setTestValue((preValue)=>{
 
 useEffect(() => {
 getTest();
-}, [data])
+ // eslint-disable-next-line react-hooks/exhaustive-deps
+}, [])
 
 const getTest=()=>{
 axios.get(domain+'get-test').then(res=>{
