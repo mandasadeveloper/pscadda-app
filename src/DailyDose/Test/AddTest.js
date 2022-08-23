@@ -7,7 +7,8 @@ let domain = "https://pscadda.com/pscadda_app/api/";
 const [data, setData]=useState([]);
 useEffect(() => {
     getTest();
-}, [data])
+ // eslint-disable-next-line react-hooks/exhaustive-deps
+}, [])
 
 const getTest = () => {
     axios.get(domain+'get-daily-dose').then(res => {

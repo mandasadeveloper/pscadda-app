@@ -35,9 +35,11 @@ const [english, setEnglish] = useState({
     description:""
     })
    useEffect(() => {    
-        getTest(id);
-   }, [id]);
-const getTest=(id)=>{
+        getTest();
+ // eslint-disable-next-line react-hooks/exhaustive-deps
+
+   }, []);
+const getTest=()=>{
 axios.get(domain+'get-test?id='+id+'&card_id='+c_id+'&questions=hinenglish').then(res=>{
 let getHindiData = JSON.parse(res.data.hindi).questions;
 let getEnglishData = JSON.parse(res.data.english).questions;

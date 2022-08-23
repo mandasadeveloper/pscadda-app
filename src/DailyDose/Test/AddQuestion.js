@@ -25,7 +25,8 @@ export const AddQuestion = () => {
 
   useEffect(() => {
     getTest();
-  }, [id])
+ // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const getTest = () => {
     axios.get(domain + 'get-daily-dose?id=' + id + '&questions=hienglish').then(res => {

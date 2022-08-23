@@ -31,10 +31,11 @@ setTestValue((preValue)=>{
 }
 
 useEffect(() => {
-getTest(id); 
-}, [id])
+getTest(); 
+ // eslint-disable-next-line react-hooks/exhaustive-deps
+}, [])
 
-const getTest=(id)=>{
+const getTest=()=>{
     axios.get(domain+'get-test?id='+id).then(res=>{
         const data = res.data[0].quiz_list
         for (let index = 0; index < data.length; index++) {

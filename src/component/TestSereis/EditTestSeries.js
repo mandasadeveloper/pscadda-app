@@ -35,10 +35,11 @@ setTestValue((preValue)=>{
 }
 
 useEffect(() => {
-getTest(id); 
-}, [id])
+getTest(); 
+ // eslint-disable-next-line react-hooks/exhaustive-deps
+}, [])
 
-const getTest=(id)=>{
+const getTest=()=>{
     axios.get(domain+'get-test?id='+id).then(res=>{
         setTestValue({
             title:res.data[0].test_title,

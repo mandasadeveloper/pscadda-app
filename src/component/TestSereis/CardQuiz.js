@@ -12,7 +12,8 @@ export const CardQuiz = () => {
     const [data, setData] = useState([]);
     useEffect(() => {
         getTest();
-    }, [id])
+ // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     const getTest = () => {
         axios.get(domain + 'get-test?id=' + id).then(res => {
