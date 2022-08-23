@@ -35,9 +35,9 @@ const [english, setEnglish] = useState({
     description:""
     })
    useEffect(() => {    
-        getTest();
-   }, []);
-const getTest=()=>{
+        getTest(id);
+   }, [id]);
+const getTest=(id)=>{
 axios.get(domain+'get-test?id='+id+'&card_id='+c_id+'&questions=hinenglish').then(res=>{
 let getHindiData = JSON.parse(res.data.hindi).questions;
 let getEnglishData = JSON.parse(res.data.english).questions;

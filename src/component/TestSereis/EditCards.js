@@ -31,10 +31,10 @@ setTestValue((preValue)=>{
 }
 
 useEffect(() => {
-getTest(); 
-}, [])
+getTest(id); 
+}, [id])
 
-const getTest=()=>{
+const getTest=(id)=>{
     axios.get(domain+'get-test?id='+id).then(res=>{
         const data = res.data[0].quiz_list
         for (let index = 0; index < data.length; index++) {

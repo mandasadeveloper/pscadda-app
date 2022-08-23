@@ -25,10 +25,10 @@ export const UploadQustions = () => {
   const data ="";
 
   useEffect(() => {
-    getTest();
-  }, [])
+    getTest(id);
+  }, [id])
 
-  const getTest = () => {
+  const getTest = (id) => {
     axios.get(domain + 'get-test?id=' + id + '&card_id=' + c_id + '&questions=hinenglish').then(res => {
       setGetHindi(JSON.parse(res.data.hindi).questions);
       setGetEnglish(JSON.parse(res.data.english).questions);

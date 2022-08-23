@@ -33,7 +33,7 @@ setTestValue((preValue)=>{
 
 useEffect(() => {
 getTest();
-}, [])
+}, [data])
 
 const getTest=()=>{
 axios.get(domain+'get-test').then(res=>{

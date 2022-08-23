@@ -35,10 +35,10 @@ setTestValue((preValue)=>{
 }
 
 useEffect(() => {
-getTest(); 
-}, [])
+getTest(id); 
+}, [id])
 
-const getTest=()=>{
+const getTest=(id)=>{
     axios.get(domain+'get-test?id='+id).then(res=>{
         setTestValue({
             title:res.data[0].test_title,
