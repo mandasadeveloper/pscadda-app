@@ -5,6 +5,7 @@ import { Head } from '../../component/Head';
 export const AddTest = () => {
 let domain = "https://pscadda.com/pscadda_app/api/";
 const [data, setData]=useState([]);
+const [disabled, setDisabled]=useState(true);
 const [state, setState]=useState({
     id:-1,
 });
@@ -16,6 +17,8 @@ useEffect(() => {
 const hendlechange = (e)=>{
 const {name,value}=e.target;
 setState((preValue)=>{
+    if(value) setDisabled(false);
+    else setDisabled(true);
     return{
         ...preValue,
         [name]:value
@@ -116,7 +119,7 @@ const deleteSection=()=>{
                                                 <label htmlFor="title">Marks</label>
                                             </div>                                         
                                             <div className="d-flex align-items-center justify-content-between mt-4 mb-0">                                               
-                                                <button className="btn btn-primary" onClick={submit}>Upload</button>
+                                                <button className="btn btn-primary" disabled={disabled} onClick={submit}>Upload</button>
                                             </div>
                                         </form>
                                     </div>
