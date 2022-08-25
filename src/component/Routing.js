@@ -14,6 +14,7 @@ import { AddPost } from '../DailyDose/AddPost';
 import { AddTest } from '../DailyDose/Test/AddTest';
 import { AddQuestion } from '../DailyDose/Test/AddQuestion';
 import { DailydoseEdit } from '../DailyDose/Test/dailydoseEdit';
+import { EditCardsdose } from '../DailyDose/Test/EditCardsdose';
 export const Routing = () => {
   return (
     <Routes>
@@ -30,6 +31,7 @@ export const Routing = () => {
              <Route element={<EditQustions/>} path="/admin-edit-qustions/:id/:c_id/:index"/>    
              <Route element={<CreateCourse/>} path="/admin-add-classes"/>     
              <Route element={<AddTest/>} path="/admin-add-daily-test"/>    
+             <Route element={<EditCardsdose/>} path="/admin-edit-dailydose/:id"/>
              <Route element={<AddPost/>} path="/admin-add-post"/>           
     </Routes>
   )

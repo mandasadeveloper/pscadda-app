@@ -28,7 +28,7 @@ setState((preValue)=>{
 
 const getTest = () => {
     axios.get(domain+'get-daily-dose').then(res => {
-        setData(res.data);
+    setData(res.data);
     })
 }
 
@@ -44,10 +44,10 @@ const submit=(e)=>{
    }
     })
     }
-
-
-const deleteSection=()=>{
-}   
+    const deleteSection=(id)=>{
+        if(window.confirm("Are you sure this Test is delete")){
+        axios.post(domain+'delete-daily-dose/'+id).then(getTest())}
+        }  
   return (
     <div className="container">
                        <Head props='Daily Dose'/>
@@ -102,12 +102,12 @@ const deleteSection=()=>{
                                     <div className="card-header"><h4 className="text-center font-weight-light my-4">Add New Test</h4></div>
                                     <div className="card-body">
                                         <form>  
-                                            <div className="form-floating mb-3">
-                                                <input className="form-control" id="title" name='name' value={state.name} onChange={hendlechange} type="text" placeholder="Test Name" />
+                                        <div className="form-floating mb-3">
+                                                <input className="form-control" id="title" name='card_title' value={state.card_title} onChange={hendlechange} type="text" placeholder="Test Name" />
                                                 <label htmlFor="title">Test Name</label>
                                             </div>
                                             <div className="form-floating mb-3">
-                                                <input className="form-control" id="title" name='noOfQuestion' value={state.noOfQuestion} onChange={hendlechange} type="text" placeholder="Number Of Qustion" />
+                                                <input className="form-control" id="title" name='numQustion' value={state.numQustion} onChange={hendlechange} type="text" placeholder="Number Of Qustion" />
                                                 <label htmlFor="title">Number Of Questions</label>
                                             </div>
                                             <div className="form-floating mb-3">
@@ -117,7 +117,7 @@ const deleteSection=()=>{
                                             <div className="form-floating mb-3">
                                                 <input className="form-control" id="title" name='marks' value={state.marks} onChange={hendlechange} type="text" placeholder="Marks" />
                                                 <label htmlFor="title">Marks</label>
-                                            </div>                                         
+                                            </div>                                          
                                             <div className="d-flex align-items-center justify-content-between mt-4 mb-0">                                               
                                                 <button className="btn btn-primary" disabled={disabled} onClick={submit}>Upload</button>
                                             </div>

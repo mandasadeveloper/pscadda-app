@@ -9,7 +9,7 @@ import { Head } from '../../component/Head';
 
 export const DailydoseEdit = () => {
 let domain="https://pscadda.com/pscadda_app/api/";
-const {id,index}=useParams();
+const {id,c_id,index}=useParams();
 const [time, setTime] = useState('');
 const [getEnglish, setGetEnglish] = useState([]);
 const [getHindi, setGetHindi] = useState([]);
@@ -34,9 +34,8 @@ const [english, setEnglish] = useState({
     answer:"",
     description:""
     })
-    
    useEffect(() => {    
-    getTest();    
+        getTest();
  // eslint-disable-next-line react-hooks/exhaustive-deps
    }, []);
 const getTest=()=>{
@@ -72,7 +71,8 @@ setEnglish({
     description:getEnglishData[index]?.description 
     });
 })
- };
+ }
+
 const handleChange=(e)=>{
 const {name,value}=e.target;
 setHindi((preValue)=>{
@@ -135,7 +135,7 @@ alert(res.data.message)
 })
 }
   return (
-<div className="container" onLoad={()=>getTest()}>
+<div className="container">
     <Head props='Edit-Qustions'/>
      <div className="row justify-content-center">
      <div className="col-lg-4">

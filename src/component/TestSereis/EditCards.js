@@ -27,22 +27,9 @@ getTest();
 }, [])
 
 const getTest=()=>{
-    axios.get(domain+'get-test?id='+id).then(res=>{
-        const data = res.data[0].quiz_list
-        for (let index = 0; index < data.length; index++) {
-            const element = data[index]; 
-            if (element.id===c_id) {
-                console.log(element);
-                setState({
-                    card_title:element.card_title,
-                    numQustion:element.numQustion,
-                    status:element.status
-                })
-            break;
-            }
-        }
-
-        })
+    axios.get(domain+'get-single-data?id='+id+'&c_id='+c_id).then(res=>{
+        setState(res.data[0]);
+})
 }
 
 
@@ -51,11 +38,11 @@ e.preventDefault();
 const dataField = new FormData();
 dataField.append("id",id);
 dataField.append("c_id",c_id);
-dataField.append("title", state.title);
+dataField.append("title", state.card_title);
 dataField.append("status", state.status);
 dataField.append("active", state.active);
 dataField.append("numQustion", state.numQustion);
-dataField.append("message", state.message);
+dataField.append("message", state.message); 
 axios.post(domain+'post-quiz',dataField).then(res=>{ 
 alert(res.data.message);
 history('/admin-add-test-series-card/'+id);
@@ -78,7 +65,7 @@ getTest();
                                     <input className="form-control"
                                         name='title'
                                         onChange={hendleChange}
-                                        value={state.title}
+                                        value={state.card_title}
                                         id="title" type="text" placeholder="Quiz Name" />
                                     <label htmlFor="title">Quiz Name</label>
                                 </div>
