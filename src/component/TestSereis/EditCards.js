@@ -1,28 +1,19 @@
 import React, { useState,useEffect} from 'react'
-// import { Editor } from "react-draft-wysiwyg";
-// import { convertToRaw, EditorState,ContentState,convertFromHTML} from "draft-js";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-// import draftToHtml from "draftjs-to-html";
 import { Head } from '../Head';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 export const EditCards = () => {
     let domain="https://pscadda.com/pscadda_app/api/";
-    // let img_url='https://pscadda.com/pscadda_app/banner/';
 const history=useNavigate();
 const {id,c_id}=useParams();
-// const [banner, setBanner] = useState('')
-// const [editorState, setEditorState] = useState(() =>EditorState.createEmpty()); 
-const [testValue, setTestValue] = useState({
-    card_title:"",
-    numQustion:"",
-    status:""
-})
+const [state, setState] = useState({})
 
-const handleChange = (e)=>{
+
+const hendleChange = (e)=>{
 const {name,value}=e.target;
-setTestValue((preValue)=>{
+setState((preValue)=>{
     return{
         ...preValue,
         [name]:value,
@@ -42,7 +33,7 @@ const getTest=()=>{
             const element = data[index]; 
             if (element.id===c_id) {
                 console.log(element);
-                setTestValue({
+                setState({
                     card_title:element.card_title,
                     numQustion:element.numQustion,
                     status:element.status
@@ -54,14 +45,17 @@ const getTest=()=>{
         })
 }
 
+
 const submit=(e)=>{
 e.preventDefault();
 const dataField = new FormData();
 dataField.append("id",id);
 dataField.append("c_id",c_id);
-dataField.append("title",testValue.card_title);
-dataField.append("status",testValue.status);
-dataField.append("numQustion",testValue.numQustion);
+dataField.append("title", state.title);
+dataField.append("status", state.status);
+dataField.append("active", state.active);
+dataField.append("numQustion", state.numQustion);
+dataField.append("message", state.message);
 axios.post(domain+'post-quiz',dataField).then(res=>{ 
 alert(res.data.message);
 history('/admin-add-test-series-card/'+id);
@@ -79,34 +73,54 @@ getTest();
                             </div>  
                                     <div className="card-header"><h4 className="text-center font-weight-light my-4">Edit Test Cards</h4></div>
                                     <div className="card-body">
-                                        <form>  
-                                            <div className="form-floating mb-3">
-                                                <input className="form-control" 
-                                                name='card_title' 
-                                                onChange={handleChange}
-                                                value={testValue.card_title}
-                                                 id="card_title" type="text" placeholder="Cards Name" />
-                                                <label htmlFor="card_title">Cards Name</label>
-                                            </div>
-                                            <div className="form-floating mb-3">
-                                                <input className="form-control" 
-                                                   name='numQustion' 
-                                                   onChange={handleChange}
-                                                   value={testValue.numQustion}
-                                                   id="numQustion" type="text" placeholder="Number Of Qustions" />
-                                                <label htmlFor="numQustion">Number Of Qustions</label>
-                                            </div>                                            
-                                                <div className="form-floating mb-3">
-                                                <select name='status' onChange={handleChange} className="form-control">
-                                                <option selected>Quiz status</option>
-                                                <option  value="free">Free</option>
-                                                <option  value="paid">Paid</option>
-                                                </select>
-                                                </div>             
-                                            <div className="d-flex align-items-center justify-content-between mt-4 mb-0">                                               
-                                                <button onClick={submit} className="btn btn-primary">Upload</button>
-                                            </div>
-                                        </form>
+                                    <form>
+                                <div className="form-floating mb-3">
+                                    <input className="form-control"
+                                        name='title'
+                                        onChange={hendleChange}
+                                        value={state.title}
+                                        id="title" type="text" placeholder="Quiz Name" />
+                                    <label htmlFor="title">Quiz Name</label>
+                                </div>
+                                <div className="form-floating mb-3">
+                                    <input className="form-control"
+                                        name='numQustion'
+                                        onChange={hendleChange}
+                                        value={state.numQustion}
+                                        id="title" type="text" placeholder="Number Of Qustions" />
+                                    <label htmlFor="title">Number Of Qustions</label>
+                                </div>
+
+                                <label htmlFor="title">Active Or Deactivate status</label>
+                                <div className="form-floating mb-3">
+                                    <select name='active' onChange={hendleChange} className="form-control">
+                                        <option selected >Select Type</option>
+                                        <option defaultValue ="active">Active</option>
+                                        <option defaultValue ="deactive">Deactive</option>
+                                    </select>
+                                </div>
+
+                                <label htmlFor="title">Quiz status</label>
+                                <div className="form-floating mb-3">
+                                    <select name='status' onChange={hendleChange} className="form-control">
+                                        <option selected >Select Link Type</option>
+                                        <option defaultValue ="free">Free</option>
+                                        <option defaultValue ="paid">Paid</option>
+                                    </select>
+                                </div>
+                                <div className="form-floating mb-3">
+                                    <textarea
+                                     className="form-control"
+                                     name='message'
+                                     onChange={hendleChange}
+                                     value={state.message}
+                                     id="title" type="text" placeholder="Number Of Qustions"/>
+                                    <label htmlFor="title">Message</label>
+                                </div>
+                                <div className="d-flex align-items-center justify-content-between mt-4 mb-0">
+                                    <button onClick={submit} className="btn btn-primary">Upload</button>
+                                </div>
+                            </form>
                                     </div>
                                     <div className="card-footer text-center py-3">
                                         <div className="small"></div>

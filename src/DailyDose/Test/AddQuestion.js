@@ -52,7 +52,7 @@ export const AddQuestion = () => {
                 "questionText": `${index + 1}.${resp.rows[i]}`,
                 "answers": [
                   {
-                    "text": `"${resp.rows[i + 1][0]}"`,
+                    "text": `${resp.rows[i + 1][0]}`,
                     "score": resp.rows[i + 1][0] === resp.rows[i + 5][0] ? 1 : 0
                   },
                   {

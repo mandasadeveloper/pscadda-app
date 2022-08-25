@@ -4,16 +4,29 @@ import { Head } from '../Head';
 import axios from 'axios';
 export const CardQuiz = () => {
     let domain = "https://pscadda.com/pscadda_app/api/";
-    // let img_url='https://pscadda.com/pscadda_app/banner/';
     const { id } = useParams();
-    const [title, setTitle] = useState();
-    const [status, setStatus] = useState();
-    const [numQustion, setNumQustion] = useState();
+    const [state, setState] = useState({})
+    const [disabled, setDisabled]=useState(true);
     const [data, setData] = useState([]);
+   
+
     useEffect(() => {
         getTest();
  // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+
+
+    const hendleChange = (e)=>{
+        const {name, value} = e.target;
+        setState((preValue)=>{
+            if(value) setDisabled(false);
+            else setDisabled(true);
+        return{
+            ...preValue,
+            [name]:value
+        }
+        })
+    }
 
     const getTest = () => {
         axios.get(domain + 'get-test?id=' + id).then(res => {
@@ -26,12 +39,14 @@ export const CardQuiz = () => {
         e.preventDefault();
         const dataField = new FormData();
         dataField.append("id", id);
-        dataField.append("title", title);
-        dataField.append("status", status);
-        dataField.append("numQustion", numQustion);
+        dataField.append("title", state.title);
+        dataField.append("status", state.status);
+        dataField.append("active", state.active);
+        dataField.append("numQustion", state.numQustion);
+        dataField.append("message", state.message);
         axios.post(domain + 'post-quiz', dataField).then(res => { 
-            console.log(res.data.message);
-            getTest();
+        console.log(res.data.message);
+        getTest();
         })
     }
     const deleteSection = (id) => {
@@ -101,29 +116,48 @@ export const CardQuiz = () => {
                                 <div className="form-floating mb-3">
                                     <input className="form-control"
                                         name='title'
-                                        onChange={(e) => setTitle(e.target.value)}
-                                        value={title}
+                                        onChange={hendleChange}
+                                        value={state.title}
                                         id="title" type="text" placeholder="Quiz Name" />
                                     <label htmlFor="title">Quiz Name</label>
                                 </div>
                                 <div className="form-floating mb-3">
                                     <input className="form-control"
                                         name='numQustion'
-                                        onChange={(e) => setNumQustion(e.target.value)}
-                                        value={numQustion}
+                                        onChange={hendleChange}
+                                        value={state.numQustion}
                                         id="title" type="text" placeholder="Number Of Qustions" />
                                     <label htmlFor="title">Number Of Qustions</label>
                                 </div>
+
+                                <label htmlFor="title">Active Or Deactivate status</label>
+                                <div className="form-floating mb-3">
+                                    <select name='active' onChange={hendleChange} className="form-control">
+                                        <option selected >Select Type</option>
+                                        <option defaultValue ="active">Active</option>
+                                        <option defaultValue ="deactive">Deactive</option>
+                                    </select>
+                                </div>
+
                                 <label htmlFor="title">Quiz status</label>
                                 <div className="form-floating mb-3">
-                                    <select name='status' onChange={(e) => setStatus(e.target.value)} className="form-control">
+                                    <select name='status' onChange={hendleChange} className="form-control">
                                         <option selected >Select Link Type</option>
                                         <option defaultValue ="free">Free</option>
                                         <option defaultValue ="paid">Paid</option>
                                     </select>
                                 </div>
+                                <div className="form-floating mb-3">
+                                    <textarea
+                                     className="form-control"
+                                     name='message'
+                                     onChange={hendleChange}
+                                     value={state.message}
+                                     id="title" type="text" placeholder="Number Of Qustions"/>
+                                    <label htmlFor="title">Message</label>
+                                </div>
                                 <div className="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                    <button onClick={submit} className="btn btn-primary">Upload</button>
+                                    <button onClick={submit} disabled={disabled} className="btn btn-primary">Upload</button>
                                 </div>
                             </form>
                         </div>
