@@ -9,7 +9,7 @@ import { Head } from '../../component/Head';
 
 export const DailydoseEdit = () => {
 let domain="https://pscadda.com/pscadda_app/api/";
-const {id,c_id,index}=useParams();
+const {id,index}=useParams();
 const [time, setTime] = useState('');
 const [getEnglish, setGetEnglish] = useState([]);
 const [getHindi, setGetHindi] = useState([]);
