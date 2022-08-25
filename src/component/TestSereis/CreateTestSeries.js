@@ -10,6 +10,7 @@ export const CreateTestSeries = () => {
     let domain="https://pscadda.com/pscadda_app/api/";
     let img_url='https://pscadda.com/pscadda_app/banner/';
 const [banner, setBanner] = useState('');
+const [disabled, setDisabled]=useState(true);
 const [editorState, setEditorState] = useState(() =>EditorState.createEmpty()); 
 const [testValue, setTestValue] = useState({
     title:"",
@@ -24,6 +25,8 @@ setBanner(e.target.files[0])
 const handleChange = (e)=>{
 const {name,value}=e.target;
 setTestValue((preValue)=>{
+    if(value) setDisabled(false);
+    else setDisabled(true);
     return{
         ...preValue,
         [name]:value,
@@ -153,7 +156,7 @@ return(
                                           />
                                           </div></div>                                    
                                             <div className="d-flex align-items-center justify-content-between mt-4 mb-0">                                               
-                                                <button onClick={submit} className="btn btn-primary">Upload</button>
+                                                <button onClick={submit} disabled={disabled} className="btn btn-primary">Upload</button>
                                             </div>
                                         </form>
                                     </div>

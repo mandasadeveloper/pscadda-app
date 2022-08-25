@@ -44,8 +44,8 @@ const getTest=()=>{
         setTestValue({
             title:res.data[0].test_title,
             price:res.data[0].test_price,
-            banner:res.data[0].banner
         })
+        setBanner(res.data[0].banner);
         setEditorState(() =>EditorState.createWithContent(
             ContentState.createFromBlockArray(
               convertFromHTML(res.data[0].description)
