@@ -82,8 +82,8 @@ getTest();
                                 <div className="form-floating mb-3">
                                     <select name='active' onChange={hendleChange} className="form-control">
                                         <option selected >Select Type</option>
-                                        <option defaultValue ="active">Active</option>
-                                        <option defaultValue ="deactive">Deactive</option>
+                                        <option value ="active">active</option>
+                                        <option value ="deactive">deactive</option>
                                     </select>
                                 </div>
 
@@ -91,8 +91,8 @@ getTest();
                                 <div className="form-floating mb-3">
                                     <select name='status' onChange={hendleChange} className="form-control">
                                         <option selected >Select Link Type</option>
-                                        <option defaultValue ="free">Free</option>
-                                        <option defaultValue ="paid">Paid</option>
+                                        <option value ="free">free</option>
+                                        <option value ="paid">paid</option>
                                     </select>
                                 </div>
                                 <div className="form-floating mb-3">
