@@ -63,7 +63,7 @@ getTest();
                                     <form>
                                 <div className="form-floating mb-3">
                                     <input className="form-control"
-                                        name='title'
+                                        name='card_title'
                                         onChange={hendleChange}
                                         value={state.card_title}
                                         id="title" type="text" placeholder="Quiz Name" />
