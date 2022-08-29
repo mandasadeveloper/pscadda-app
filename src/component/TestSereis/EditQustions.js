@@ -58,7 +58,7 @@ option_1:getHindiData[index]?.answers[0].text,
 option_2:getHindiData[index]?.answers[1].text,
 option_3:getHindiData[index]?.answers[2].text,
 option_4:getHindiData[index]?.answers[3].text,
-answer:getHindiData[index]?.answers.find(element=>element.score === 1).text,
+answer:getHindiData[index]?.answers.find(element=>element.score === 1)?getHindiData[index]?.answers.find(element=>element.score === 1).text:null,
 description:getHindiData[index]?.description 
 });
 setEnglish({
@@ -67,7 +67,7 @@ setEnglish({
     option_2:getEnglishData[index]?.answers[1].text,
     option_3:getEnglishData[index]?.answers[2].text,
     option_4:getEnglishData[index]?.answers[3].text,
-    answer:getEnglishData[index]?.answers.find(element=>element.score === 1).text,
+    answer:getEnglishData[index]?.answers.find(element=>element.score === 1)?getEnglishData[index]?.answers.find(element=>element.score === 1).text:null,
     description:getEnglishData[index]?.description 
     });
 })
