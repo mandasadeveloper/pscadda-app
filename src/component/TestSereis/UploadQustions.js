@@ -181,7 +181,7 @@ export const UploadQustions = () => {
                                 </tr>
                                 <tr>
                                   <td>B.{section.answers[1].text}</td>
-                                  <td>B.{getEnglish[index].answers[0].text}</td>
+                                  <td>B.{getEnglish[index].answers[1].text}</td>
                                 </tr>
                                 <tr>
                                   <td>C.{section.answers[2].text}</td>
